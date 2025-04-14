@@ -6,7 +6,7 @@ export function Header() {
     <header className='lg:max-w-7xl text-white flex justify-between items-center mx-auto pt-8'>
       <Link href='/' className='text-2xl font-bold'>
         <Image
-          src={'/logo.svg'}
+          src={'/logo-white.svg'}
           alt='Logo da pódio tecnologia'
           width={197}
           height={43}
@@ -17,7 +17,7 @@ export function Header() {
         <ul className='flex space-x-4'>
           <li>
             <Link href='#about' className='text-white'>
-              A pódio Tecnologia
+              A Podiotech
             </Link>
           </li>
           <li>

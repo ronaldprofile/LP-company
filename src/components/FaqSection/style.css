@@ -1,0 +1,7 @@
+.AccordionTrigger:hover {
+  text-decoration: none;
+  /* border-bottom: ; */
+}
+.AccordionChevron {
+  background: red;
+}
