@@ -28,7 +28,7 @@ export function SolicitationSection() {
 
           <SolicitationDrawer
             Trigger={
-              <Button className='h-16 text-white w-full mt-6 uppercase font-semibold md:text-xl px-0'>
+              <Button className='h-16 text-white w-full mt-6 uppercase font-semibold md:text-xl px-2'>
                 Solicitar uma demonstração
               </Button>
             }
