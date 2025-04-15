@@ -138,7 +138,7 @@ export function SolicitationDrawer({ Trigger }: SolicitationDrawerProps) {
             />
 
             <DrawerFooter className='w-full px-0'>
-              <Button type='submit' className='w-full'>
+              <Button type='submit' className='w-full text-black'>
                 Quero solicitar uma demonstração
               </Button>
             </DrawerFooter>

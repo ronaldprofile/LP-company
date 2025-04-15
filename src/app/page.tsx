@@ -3,7 +3,7 @@ import { AdvantagesSection } from '@/components/AdvantagesSection/AdvantagesSect
 import { BenefitsSection } from '@/components/BenefitsSection/BenefitsSection'
 import { FaqSection } from '@/components/FaqSection/FaqSection'
 import { Footer } from '@/components/Footer'
-import { Header } from '@/components/Header'
+import { Header } from '@/components/Header/Header'
 import { HomeSection } from '@/components/HomeSection'
 import { SolicitationSection } from '@/components/SolicitationSection'
 import Image from 'next/image'
@@ -38,7 +38,7 @@ export default function Home() {
 
       <div className='w-full bg-highlight'>
         <div className='lg:max-w-[1168px] mx-auto py-10 px-6'>
-          <h2 className='text-white font-bold text-4xl w-[619px]'>
+          <h2 className='text-white font-bold text-2xl sm:text-3xl md:text-4xl sm:w-[619px]'>
             <Balancer>
               Dê um salto em direção ao sucesso no mercado, esqueça os processos
               manuais.

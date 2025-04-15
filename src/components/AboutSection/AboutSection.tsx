@@ -38,11 +38,11 @@ export function AboutSection() {
     <section className='lg:max-w-[1168px] mx-auto pt-28 px-6 pb-40' id='about'>
       <div className='flex flex-col gap-8 lg:flex-row lg:justify-between'>
         <div className='w-[513px] flex flex-col gap-5 text-left'>
-          <h2 className='section-title text-black leading-20 uppercase font-bold'>
+          <h2 className='section-title text-black uppercase font-bold'>
             <Balancer>Potencialize seu negócio automotivo</Balancer>
           </h2>
 
-          <p className='text-xl font-medium text-gray-text'>
+          <p className='text-base sm:text-lg md:text-xl font-medium text-gray-text'>
             O Sistema Completo de Gestão que Transforma sua Loja de Carros em
             Sucesso!
           </p>

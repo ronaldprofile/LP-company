@@ -10,7 +10,7 @@ import './style.css'
 export function FaqSection() {
   return (
     <section className='px-6 py-[128px] lg:max-w-[1168px] mx-auto'>
-      <div className='flex flex-col lg:flex-row lg:justify-between'>
+      <div className='flex flex-col gap-10 lg:flex-row lg:justify-between'>
         <h2 className='section-title'>faq</h2>
 
         <Accordion type='single' collapsible className='w-[767px]'>

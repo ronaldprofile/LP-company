@@ -37,7 +37,7 @@ const advantages = [
 export function AdvantagesSection() {
   return (
     <section className='lg:max-w-[1168px] mx-auto px-6 pt-[136px]'>
-      <h2 className='section-title text-black font-bold text-center leading-[105%]'>
+      <h2 className='section-title text-black font-bold text-center'>
         <Balancer>O que você encontra na pódio tecnologia</Balancer>
       </h2>
 

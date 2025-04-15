@@ -54,7 +54,7 @@ export function BenefitsSection() {
                     height={26}
                     width={26}
                   />
-                  <h3 className='text-xl font-bold text-black'>
+                  <h3 className='md:text-xl font-bold text-black'>
                     {benefit.title}
                   </h3>
                 </div>
@@ -66,7 +66,7 @@ export function BenefitsSection() {
             ))}
           </div>
 
-          <div className='transform -translate-y-1/7 translate-x-14'>
+          <div className='hidden lg:block transform -translate-y-1/7 translate-x-14'>
             <Image
               src={'/shield-check.svg'}
               alt='Imagem de um escudo com um check'

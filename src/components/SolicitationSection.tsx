@@ -19,7 +19,7 @@ export function SolicitationSection() {
             Leve sua loja para o próximo nível agora mesmo!
           </span>
 
-          <h4 className='mt-2 font-bold text-4xl text-black uppercase'>
+          <h4 className='mt-2 font-bold text-2xl sm:text-3xl md:text-4xl text-black uppercase'>
             <Balancer>
               conheça o Sistema web para lojas de automóveis com tudo o que você
               precisa
@@ -28,7 +28,7 @@ export function SolicitationSection() {
 
           <SolicitationDrawer
             Trigger={
-              <Button className='h-16 text-white w-full mt-6 uppercase font-semibold text-xl'>
+              <Button className='h-16 text-white w-full mt-6 uppercase font-semibold md:text-xl px-0'>
                 Quero solicitar uma demonstração
               </Button>
             }

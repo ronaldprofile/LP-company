@@ -15,7 +15,7 @@ body {
 }
 
 .section-title {
-  @apply text-[68px] uppercase;
+  @apply uppercase text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-[68px];
 }
 
 @theme inline {
