@@ -11,6 +11,7 @@ export function Button({ children, className, ...rest }: ButtonProps) {
       {...rest}
       className={cn(
         'bg-highlight rounded-lg px-6 py-4 cursor-pointer hover:brightness-105 transition-all',
+        'font-semibold text-white uppercase',
         className
       )}
     >

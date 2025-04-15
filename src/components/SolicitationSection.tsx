@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Balancer from 'react-wrap-balancer'
 import { Button } from './Button'
+import { SolicitationDrawer } from './SolicitationDrawer/SolicitationDrawer'
 
 export function SolicitationSection() {
   return (
@@ -25,9 +26,13 @@ export function SolicitationSection() {
             </Balancer>
           </h4>
 
-          <Button className='h-16 text-white w-full mt-6 uppercase font-semibold text-xl'>
-            Quero solicitar uma demonstração
-          </Button>
+          <SolicitationDrawer
+            Trigger={
+              <Button className='h-16 text-white w-full mt-6 uppercase font-semibold text-xl'>
+                Quero solicitar uma demonstração
+              </Button>
+            }
+          />
         </div>
       </div>
     </section>

@@ -5,6 +5,8 @@ import icon1 from './icons/1.svg'
 import icon2 from './icons/2.svg'
 import icon3 from './icons/3.svg'
 import icon4 from './icons/4.svg'
+import { Button } from '../Button'
+import { SolicitationDrawer } from '../SolicitationDrawer/SolicitationDrawer'
 
 const cards = [
   {
@@ -44,6 +46,10 @@ export function AboutSection() {
             O Sistema Completo de Gestão que Transforma sua Loja de Carros em
             Sucesso!
           </p>
+
+          <SolicitationDrawer
+            Trigger={<Button className='mt-auto'>Veja demonstração</Button>}
+          />
         </div>
 
         <div className='flex flex-col gap-8 w-[422px]'>
