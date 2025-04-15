@@ -24,7 +24,7 @@ export function NavDesktop() {
         <li>
           <SolicitationDrawer
             Trigger={
-              <Button className='h-9 bg-white text-highlight font-semibold items-center py-0 rounded-sm'>
+              <Button className='h-9 bg-white text-foreground font-semibold items-center py-0 rounded-sm'>
                 Solicite uma demostração
               </Button>
             }

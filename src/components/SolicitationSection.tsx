@@ -15,7 +15,7 @@ export function SolicitationSection() {
         />
 
         <div className='px-6'>
-          <span className='text-xl text-black font-medium'>
+          <span className='text-lg text-black font-medium'>
             Leve sua loja para o próximo nível agora mesmo!
           </span>
 
@@ -29,7 +29,7 @@ export function SolicitationSection() {
           <SolicitationDrawer
             Trigger={
               <Button className='h-16 text-white w-full mt-6 uppercase font-semibold md:text-xl px-0'>
-                Quero solicitar uma demonstração
+                Solicitar uma demonstração
               </Button>
             }
           />

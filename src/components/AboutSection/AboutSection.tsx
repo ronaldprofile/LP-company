@@ -43,12 +43,18 @@ export function AboutSection() {
           </h2>
 
           <p className='text-base sm:text-lg md:text-xl font-medium text-gray-text'>
-            O Sistema Completo de Gestão que Transforma sua Loja de Carros em
-            Sucesso!
+            <Balancer>
+              O Sistema Completo de Gestão que Transforma sua Loja de Carros em
+              Sucesso!
+            </Balancer>
           </p>
 
           <SolicitationDrawer
-            Trigger={<Button className='mt-auto'>Veja demonstração</Button>}
+            Trigger={
+              <Button className='mt-auto w-max lg:w-full'>
+                Veja demonstração
+              </Button>
+            }
           />
         </div>
 
