@@ -11,7 +11,7 @@ export function FaqSection() {
   return (
     <section className='px-6 py-[128px] lg:max-w-[1168px] mx-auto'>
       <div className='flex flex-col gap-10 lg:flex-row lg:justify-between'>
-        <h2 className='section-title'>faq</h2>
+        <h2 className='section-title font-bold'>faq</h2>
 
         <Accordion type='single' collapsible className='lg:w-[767px]'>
           <AccordionItem value='item-1'>

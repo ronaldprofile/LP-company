@@ -2,7 +2,7 @@ import Balancer from 'react-wrap-balancer'
 
 export function HomeSection() {
   return (
-    <section className='mt-[67px] lg:max-w-[870px] mx-auto text-left lg:text-center px-6'>
+    <section className='mt-[67px] lg:w-[1000px] mx-auto text-left lg:text-center px-6'>
       <h1 className='section-title text-white uppercase font-bold'>
         <Balancer>
           Sua Plataforma Completa para Gestão de Lojas de Veículos
