@@ -53,7 +53,7 @@ export function SolicitationDrawer({ Trigger }: SolicitationDrawerProps) {
   return (
     <Drawer onOpenChange={closeDrawer} direction='right'>
       <DrawerTrigger asChild>{Trigger}</DrawerTrigger>
-      <DrawerContent className={styles['solicitaion-content']}>
+      <DrawerContent className={styles['solicitation-content']}>
         <DrawerHeader className='flex-row items-center justify-between'>
           <DrawerTitle className='text-xl'>Marque uma demonstração</DrawerTitle>
           <DrawerClose title='Fechar'>

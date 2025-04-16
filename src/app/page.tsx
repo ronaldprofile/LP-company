@@ -17,7 +17,7 @@ export default function Home() {
       <ScrollToTopButton />
       <WhatsappButton />
 
-      <div className='relative w-full h-[800px]'>
+      <div className='relative w-full h-[540px] lg:h-[800px]'>
         {/* Radial gradient overlay */}
         <div className='absolute inset-0 bg-radial from-[#20AB99] to-[#0D453E] to-75% opacity-80 z-10' />
 
