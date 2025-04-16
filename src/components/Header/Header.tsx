@@ -38,8 +38,8 @@ export function Header() {
           </DrawerTrigger>
 
           <DrawerContent className='w-full'>
-            <div className='px-6'>
-              <DrawerHeader className='flex flex-row items-center justify-between'>
+            <div className='px-6 pb-6 pt-6'>
+              <DrawerHeader className='flex flex-row items-center justify-between px-0'>
                 <DrawerTitle className='text-xl'>Menu</DrawerTitle>
                 <DrawerClose title='Fechar'>
                   <X className='cursor-pointer' />
@@ -47,7 +47,7 @@ export function Header() {
               </DrawerHeader>
 
               <nav>
-                <ul className='flex flex-col space-y-5 items-start p-4'>
+                <ul className='flex flex-col space-y-5 items-start'>
                   <li>
                     <Link href='#about' className='text-black block'>
                       A Podiotech
@@ -66,7 +66,7 @@ export function Header() {
                   <li>
                     <SolicitationDrawer
                       Trigger={
-                        <Button className='h-9 bg-highlight text-black font-semibold items-center py-0 rounded-sm'>
+                        <Button className='h-9 bg-highlight text-black font-semibold items-center py-0 px-2.5 rounded-sm'>
                           Solicite uma demonstração
                         </Button>
                       }

@@ -138,8 +138,11 @@ export function SolicitationDrawer({ Trigger }: SolicitationDrawerProps) {
             />
 
             <DrawerFooter className='w-full px-0'>
-              <Button type='submit' className='w-full text-black'>
-                Quero solicitar uma demonstração
+              <Button
+                type='submit'
+                className='w-full text-black p-2 lg:px-6 lg:py-4'
+              >
+                Solicitar uma demonstração
               </Button>
             </DrawerFooter>
           </form>

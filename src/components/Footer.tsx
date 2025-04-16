@@ -15,7 +15,7 @@ export function Footer() {
               height={43}
             />
 
-            <p className='text-xs w-[657px]'>
+            <p className='text-xs lg:w-[657px]'>
               <Balancer>
                 Experiência Premium a Preços Imbatíveis: Dedicação incessante
                 resultou em uma experiência excepcional para nossos usuários em
