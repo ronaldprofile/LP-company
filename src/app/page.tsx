@@ -9,20 +9,35 @@ import { ScrollToTopButton } from '@/components/ScrollToTop/ScrollToTop'
 import { WhatsappButton } from '@/components/WhatsappButton'
 import { SolicitationSection } from '@/components/SolicitationSection'
 import Image from 'next/image'
-import Balancer from 'react-wrap-balancer'
+import { Banner } from '@/types/banners'
+import { cn } from '@/lib/utils'
+import { API_BASE_URL } from '@/utils/api'
 
-export default function Home() {
+export default async function Home() {
+  const response = await fetch(`${API_BASE_URL}/api/banners`)
+  const data: Banner[] = await response.json()
+
+  const generalBanners = data[0]
+
+  const homeBannerBackground = generalBanners.banner_section
+  const platformPrintBanner = generalBanners.print_platform_svg
+
   return (
     <div className='w-full h-screen'>
       <ScrollToTopButton />
       <WhatsappButton />
 
-      <div className='relative w-full h-[540px] lg:h-[800px]'>
+      <div className='relative w-full h-[600px] lg:h-[800px]'>
         {/* Radial gradient overlay */}
         <div className='absolute inset-0 bg-radial from-[#20AB99] to-[#0D453E] to-75% opacity-80 z-10' />
 
         {/* Background image */}
-        <div className='absolute inset-0 bg-[url(/banner-section-home.png)] bg-cover bg-no-repeat bg-center z-0' />
+        <div
+          className={cn('absolute inset-0 bg-cover bg-no-repeat bg-center z-0')}
+          style={{
+            backgroundImage: `url(${homeBannerBackground})`
+          }}
+        />
 
         <div className='relative z-20'>
           <Header />
@@ -32,7 +47,7 @@ export default function Home() {
 
       <div className='px-6 relative lg:max-w-[870px] mx-auto transform -translate-y-1/2 z-30'>
         <Image
-          src={'/print-platform.svg'}
+          src={platformPrintBanner}
           alt='Imagem da plataforma de gestão de veículos'
           width={870}
           height={497}
@@ -40,17 +55,6 @@ export default function Home() {
       </div>
 
       <AboutSection />
-
-      <div className='w-full bg-highlight'>
-        <div className='lg:max-w-[1168px] mx-auto py-10 px-6'>
-          <h2 className='text-white font-bold text-2xl sm:text-3xl md:text-4xl sm:w-[619px]'>
-            <Balancer>
-              Dê um salto em direção ao sucesso no mercado, esqueça os processos
-              manuais.
-            </Balancer>
-          </h2>
-        </div>
-      </div>
 
       <BenefitsSection />
       <AdvantagesSection />

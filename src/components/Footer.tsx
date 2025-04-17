@@ -1,28 +1,30 @@
+import { Footer as IFooter } from '@/types/footer'
+import { API_BASE_URL } from '@/utils/api'
 import { Facebook, Instagram, Linkedin, Youtube } from 'lucide-react'
 import Image from 'next/image'
 import Balancer from 'react-wrap-balancer'
 
-export function Footer() {
+export async function Footer() {
+  const response = await fetch(`${API_BASE_URL}/api/blocks/footer`)
+
+  const data: IFooter[] = await response.json()
+
+  const footer = data[0]
+
   return (
     <footer className='bg-[#171717] pt-[100px] pb-4'>
       <div className='lg:max-w-[1168px] mx-auto text-white px-6'>
         <div className='flex flex-col lg:flex-row lg:justify-between lg:items-center'>
           <div className='flex flex-col gap-7 mb-4 lg:mb-0'>
             <Image
-              src={'/logo.svg'}
+              src={footer.logo}
               alt='Logo da pódio tecnologia'
               width={197}
               height={43}
             />
 
             <p className='text-xs lg:w-[657px]'>
-              <Balancer>
-                Experiência Premium a Preços Imbatíveis: Dedicação incessante
-                resultou em uma experiência excepcional para nossos usuários em
-                nosso sistema de revenda de automóveis. Tudo isso a um preço
-                verdadeiramente irresistível. Descubra o melhor da revenda
-                automotiva sem comprometer seu orçamento.
-              </Balancer>
+              <Balancer>{footer.descricao}</Balancer>
             </p>
           </div>
 
@@ -31,31 +33,31 @@ export function Footer() {
               Contato:
               <br />
               <a href='#' className='font-bold'>
-                88 9223-4675
+                {footer.Telefone}
               </a>
               <br />
-              <a href='#'>vendas@podiotecnologia.com.br</a>
+              <a href='#'>{footer.email}</a>
             </address>
 
             <span>Redes sociais</span>
             <ul className='flex gap-2 items-center'>
               <li>
-                <a href='#' className='font-bold'>
+                <a href={footer.link_facebook.uri} className='font-bold'>
                   <Facebook size={20} />
                 </a>
               </li>
               <li>
-                <a href='#' className='font-bold'>
+                <a href={footer.link_instagram.uri} className='font-bold'>
                   <Instagram size={20} />
                 </a>
               </li>
               <li>
-                <a href='#' className='font-bold'>
+                <a href={footer.link_youtube.uri} className='font-bold'>
                   <Youtube size={20} />
                 </a>
               </li>
               <li>
-                <a href='#' className='font-bold'>
+                <a href={footer.link_linkedin.uri} className='font-bold'>
                   <Linkedin size={20} />
                 </a>
               </li>

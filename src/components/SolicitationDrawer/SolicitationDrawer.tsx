@@ -1,4 +1,5 @@
 'use client'
+import { useState } from 'react'
 import { Button } from '../Button'
 
 import {
@@ -25,24 +26,64 @@ import styles from './style.module.css'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { SolicitationFormValues, solicitationSchema } from './schema'
 import { X } from 'lucide-react'
+import { toast } from 'sonner'
+import { maskCNPJ, maskPhone } from '@/utils/mask'
 
 type SolicitationDrawerProps = {
   Trigger: React.ReactNode
 }
 
+const path = `${process.env.NEXT_PUBLIC_GEST_API_BASE_URL}/leads/api/lead/`
+
 export function SolicitationDrawer({ Trigger }: SolicitationDrawerProps) {
+  const [loading, setLoading] = useState(false)
+
   const form = useForm<SolicitationFormValues>({
     resolver: zodResolver(solicitationSchema),
     defaultValues: {
       name: '',
       email: '',
       cnpj: '',
-      phone: ''
+      contact01: '',
+      lead_origin: 'Site'
     }
   })
 
-  const onSubmit = (data: SolicitationFormValues) => {
-    console.log('Form Data:', data)
+  async function onSubmit(data: SolicitationFormValues) {
+    setLoading(true)
+    try {
+      const response = await fetch(path, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+
+      if (!response.ok) {
+        toast.error('Não foi possível enviar a solicitação', {
+          style: {
+            backgroundColor: '#f8d7da',
+            color: '#721c24',
+            border: '1px solid #f5c6cb'
+          }
+        })
+        return
+      }
+
+      toast.success('Solicitação enviada com sucesso!', {
+        style: {
+          backgroundColor: '#d4edda',
+          color: '#155724',
+          border: '1px solid #c3e6cb'
+        }
+      })
+      closeDrawer()
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (error) {
+    } finally {
+      setLoading(false)
+    }
   }
 
   function closeDrawer() {
@@ -110,7 +151,8 @@ export function SolicitationDrawer({ Trigger }: SolicitationDrawerProps) {
                     <Input
                       className='focus:ring-highlight'
                       placeholder='00.000.000/0000-00'
-                      {...field}
+                      value={field.value}
+                      onChange={e => field.onChange(maskCNPJ(e.target.value))}
                     />
                   </FormControl>
                   <FormMessage />
@@ -118,7 +160,7 @@ export function SolicitationDrawer({ Trigger }: SolicitationDrawerProps) {
               )}
             />
             <FormField
-              name='phone'
+              name='contact01'
               control={form.control}
               render={({ field }) => (
                 <FormItem>
@@ -129,7 +171,8 @@ export function SolicitationDrawer({ Trigger }: SolicitationDrawerProps) {
                     <Input
                       className='focus:ring-highlight'
                       placeholder='número com DDD'
-                      {...field}
+                      value={field.value}
+                      onChange={e => field.onChange(maskPhone(e.target.value))}
                     />
                   </FormControl>
                   <FormMessage />
@@ -140,9 +183,10 @@ export function SolicitationDrawer({ Trigger }: SolicitationDrawerProps) {
             <DrawerFooter className='w-full px-0'>
               <Button
                 type='submit'
+                disabled={loading || form.formState.isSubmitting}
                 className='w-full text-black p-2 lg:px-6 lg:py-4'
               >
-                Solicitar uma demonstração
+                {loading ? 'Enviando...' : 'Solicitar uma demonstração'}
               </Button>
             </DrawerFooter>
           </form>
