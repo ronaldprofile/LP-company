@@ -32,17 +32,11 @@ import { maskCNPJ, maskPhone } from '@/utils/mask'
 
 type SolicitationDrawerProps = {
   Trigger: React.ReactNode
-  open?: boolean
-  onOpenChange?: (value: boolean) => void
 }
 
 const path = `${process.env.NEXT_PUBLIC_GEST_API_BASE_URL}/leads/api/lead/`
 
-export function SolicitationDrawer({
-  open,
-  onOpenChange,
-  Trigger
-}: SolicitationDrawerProps) {
+export function SolicitationDrawer({ Trigger }: SolicitationDrawerProps) {
   const [loading, setLoading] = useState(false)
 
   const form = useForm<SolicitationFormValues>({
@@ -96,14 +90,10 @@ export function SolicitationDrawer({
   function closeDrawer() {
     form.clearErrors()
     form.reset()
-
-    if (onOpenChange) {
-      onOpenChange()
-    }
   }
 
   return (
-    <Drawer open={open} onOpenChange={closeDrawer} direction='right'>
+    <Drawer direction='right'>
       <DrawerTrigger asChild>{Trigger}</DrawerTrigger>
 
       <DrawerPortal>
