@@ -32,11 +32,17 @@ import { maskCNPJ, maskPhone } from '@/utils/mask'
 
 type SolicitationDrawerProps = {
   Trigger: React.ReactNode
+  open?: boolean
+  onOpenChange?: () => void
 }
 
 const path = `${process.env.NEXT_PUBLIC_GEST_API_BASE_URL}/leads/api/lead/`
 
-export function SolicitationDrawer({ Trigger }: SolicitationDrawerProps) {
+export function SolicitationDrawer({
+  Trigger,
+  open,
+  onOpenChange
+}: SolicitationDrawerProps) {
   const [loading, setLoading] = useState(false)
 
   const form = useForm<SolicitationFormValues>({
@@ -72,6 +78,7 @@ export function SolicitationDrawer({ Trigger }: SolicitationDrawerProps) {
         return
       }
 
+      closeDrawer()
       toast.success('Solicitação enviada com sucesso!', {
         style: {
           backgroundColor: '#d4edda',
@@ -79,7 +86,6 @@ export function SolicitationDrawer({ Trigger }: SolicitationDrawerProps) {
           border: '1px solid #c3e6cb'
         }
       })
-      closeDrawer()
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
     } finally {
@@ -90,10 +96,11 @@ export function SolicitationDrawer({ Trigger }: SolicitationDrawerProps) {
   function closeDrawer() {
     form.clearErrors()
     form.reset()
+    if (onOpenChange) onOpenChange()
   }
 
   return (
-    <Drawer direction='right'>
+    <Drawer direction='right' open={open} onOpenChange={closeDrawer}>
       <DrawerTrigger asChild>{Trigger}</DrawerTrigger>
 
       <DrawerPortal>

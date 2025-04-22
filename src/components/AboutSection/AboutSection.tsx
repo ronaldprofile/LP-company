@@ -1,10 +1,9 @@
 import Balancer from 'react-wrap-balancer'
 import { Card } from './Card'
 
-import { Button } from '../Button'
-import { SolicitationDrawer } from '../SolicitationDrawer/SolicitationDrawer'
 import { PodioResponse } from '@/types/podio'
 import { API_BASE_URL } from '@/utils/api'
+import { OpenSolicitationButton } from '../OpenSolicitationButton'
 
 export type ICard = PodioResponse['itens'][number]
 
@@ -24,12 +23,9 @@ export async function AboutSection() {
             <Balancer>{data.description}</Balancer>
           </p>
 
-          <SolicitationDrawer
-            Trigger={
-              <Button className='mt-auto w-max lg:w-full'>
-                Veja demonstração
-              </Button>
-            }
+          <OpenSolicitationButton
+            title=' Veja demonstração'
+            className='mt-auto w-max lg:w-full'
           />
         </div>
 

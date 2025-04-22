@@ -1,9 +1,8 @@
 import Image from 'next/image'
 import Balancer from 'react-wrap-balancer'
-import { Button } from './Button'
-import { SolicitationDrawer } from './SolicitationDrawer/SolicitationDrawer'
 import { CTO } from '@/types/CTO'
 import { API_BASE_URL } from '@/utils/api'
+import { OpenSolicitationButton } from '../OpenSolicitationButton'
 
 export async function SolicitationSection() {
   const response = await fetch(`${API_BASE_URL}/api/blocks/cto`)
@@ -25,7 +24,7 @@ export async function SolicitationSection() {
           alt='Imagem de um computador com a plataforma de gestão de veículos'
         />
 
-        <div className='px-6'>
+        <div className='px-6 pb-4'>
           <span className='text-lg text-black font-medium'>
             {content.titulo}
           </span>
@@ -34,12 +33,9 @@ export async function SolicitationSection() {
             <Balancer>{content.descricao}</Balancer>
           </h4>
 
-          <SolicitationDrawer
-            Trigger={
-              <Button className='h-16 text-white w-full mt-6 uppercase font-semibold md:text-xl px-2'>
-                {content.link.title}
-              </Button>
-            }
+          <OpenSolicitationButton
+            title={content.link.title}
+            className='h-16 text-white w-full mt-6 uppercase font-semibold md:text-xl px-2'
           />
         </div>
       </div>
