@@ -45,7 +45,7 @@ export default async function Home() {
         </div>
       </div>
 
-      <div className='px-6 relative lg:max-w-[870px] mx-auto transform -translate-y-1/2 z-30'>
+      <div className='px-6 relative lg:max-w-[870px] mx-auto transform -translate-y-1/2 z-10'>
         <Image
           src={platformPrintBanner}
           alt='Imagem da plataforma de gestão de veículos'
