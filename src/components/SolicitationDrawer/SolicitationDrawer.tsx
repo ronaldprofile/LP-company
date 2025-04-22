@@ -9,7 +9,8 @@ import {
   DrawerFooter,
   DrawerHeader,
   DrawerTitle,
-  DrawerTrigger
+  DrawerTrigger,
+  DrawerPortal
 } from '../ui/drawer'
 import {
   Form,
@@ -31,11 +32,17 @@ import { maskCNPJ, maskPhone } from '@/utils/mask'
 
 type SolicitationDrawerProps = {
   Trigger: React.ReactNode
+  open?: boolean
+  onOpenChange?: (value: boolean) => void
 }
 
 const path = `${process.env.NEXT_PUBLIC_GEST_API_BASE_URL}/leads/api/lead/`
 
-export function SolicitationDrawer({ Trigger }: SolicitationDrawerProps) {
+export function SolicitationDrawer({
+  open,
+  onOpenChange,
+  Trigger
+}: SolicitationDrawerProps) {
   const [loading, setLoading] = useState(false)
 
   const form = useForm<SolicitationFormValues>({
@@ -89,109 +96,120 @@ export function SolicitationDrawer({ Trigger }: SolicitationDrawerProps) {
   function closeDrawer() {
     form.clearErrors()
     form.reset()
+
+    if (onOpenChange) {
+      onOpenChange()
+    }
   }
 
   return (
-    <Drawer onOpenChange={closeDrawer} direction='right'>
+    <Drawer open={open} onOpenChange={closeDrawer} direction='right'>
       <DrawerTrigger asChild>{Trigger}</DrawerTrigger>
-      <DrawerContent className={styles['solicitation-content']}>
-        <DrawerHeader className='flex-row items-center justify-between'>
-          <DrawerTitle className='text-xl'>Marque uma demonstração</DrawerTitle>
-          <DrawerClose title='Fechar'>
-            <X className='cursor-pointer' />
-          </DrawerClose>
-        </DrawerHeader>
 
-        <Form {...form}>
-          <form
-            onSubmit={form.handleSubmit(onSubmit)}
-            className='space-y-4 px-4 py-2'
-          >
-            <FormField
-              name='name'
-              control={form.control}
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className='text-gray-text'>Nome *</FormLabel>
-                  <FormControl className='h-12 '>
-                    <Input
-                      placeholder='como gostaria de ser chamado?'
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              name='email'
-              control={form.control}
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className='text-gray-text'>E-mail *</FormLabel>
-                  <FormControl className='h-12 '>
-                    <Input
-                      type='email'
-                      placeholder='nome@minhaempresa.com.br'
-                      {...field}
-                    />
-                  </FormControl>
+      <DrawerPortal>
+        <DrawerContent className={styles['solicitation-content']}>
+          <DrawerHeader className='flex-row items-center justify-between'>
+            <DrawerTitle className='text-xl'>
+              Marque uma demonstração
+            </DrawerTitle>
+            <DrawerClose title='Fechar'>
+              <X className='cursor-pointer' />
+            </DrawerClose>
+          </DrawerHeader>
 
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              name='cnpj'
-              control={form.control}
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className='text-gray-text'>CNPJ *</FormLabel>
-                  <FormControl className='h-12 focus-within:ring-highlight'>
-                    <Input
-                      className='focus:ring-highlight'
-                      placeholder='00.000.000/0000-00'
-                      value={field.value}
-                      onChange={e => field.onChange(maskCNPJ(e.target.value))}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              name='contact01'
-              control={form.control}
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className='text-gray-text'>
-                    Nº do celular *
-                  </FormLabel>
-                  <FormControl className='h-12 focus-within:ring-highlight'>
-                    <Input
-                      className='focus:ring-highlight'
-                      placeholder='número com DDD'
-                      value={field.value}
-                      onChange={e => field.onChange(maskPhone(e.target.value))}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+          <Form {...form}>
+            <form
+              onSubmit={form.handleSubmit(onSubmit)}
+              className='space-y-4 px-4 py-2'
+            >
+              <FormField
+                name='name'
+                control={form.control}
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className='text-gray-text'>Empresa *</FormLabel>
+                    <FormControl className='h-12 '>
+                      <Input
+                        placeholder='como gostaria de ser chamado?'
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                name='email'
+                control={form.control}
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className='text-gray-text'>E-mail *</FormLabel>
+                    <FormControl className='h-12 '>
+                      <Input
+                        type='email'
+                        placeholder='nome@minhaempresa.com.br'
+                        {...field}
+                      />
+                    </FormControl>
 
-            <DrawerFooter className='w-full px-0'>
-              <Button
-                type='submit'
-                disabled={loading || form.formState.isSubmitting}
-                className='w-full text-black p-2 lg:px-6 lg:py-4'
-              >
-                {loading ? 'Enviando...' : 'Solicitar uma demonstração'}
-              </Button>
-            </DrawerFooter>
-          </form>
-        </Form>
-      </DrawerContent>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                name='cnpj'
+                control={form.control}
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className='text-gray-text'>CNPJ *</FormLabel>
+                    <FormControl className='h-12 focus-within:ring-highlight'>
+                      <Input
+                        className='focus:ring-highlight'
+                        placeholder='00.000.000/0000-00'
+                        value={field.value}
+                        onChange={e => field.onChange(maskCNPJ(e.target.value))}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                name='contact01'
+                control={form.control}
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className='text-gray-text'>
+                      Nº do celular *
+                    </FormLabel>
+                    <FormControl className='h-12 focus-within:ring-highlight'>
+                      <Input
+                        className='focus:ring-highlight'
+                        placeholder='número com DDD'
+                        value={field.value}
+                        onChange={e =>
+                          field.onChange(maskPhone(e.target.value))
+                        }
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <DrawerFooter className='w-full px-0'>
+                <Button
+                  type='submit'
+                  disabled={loading || form.formState.isSubmitting}
+                  className='w-full text-black p-2 lg:px-6 lg:py-4'
+                >
+                  {loading ? 'Enviando...' : 'Solicitar uma demonstração'}
+                </Button>
+              </DrawerFooter>
+            </form>
+          </Form>
+        </DrawerContent>
+      </DrawerPortal>
     </Drawer>
   )
 }

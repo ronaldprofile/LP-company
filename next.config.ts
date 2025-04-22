@@ -3,11 +3,11 @@ import type { NextConfig } from 'next'
 const nextConfig: NextConfig = {
   /* config options here */
   output: 'export',
-  logging: {
-    fetches: {
-      fullUrl: true
-    }
-  },
+  // logging: {
+  //   fetches: {
+  //     fullUrl: false
+  //   }
+  // },
   images: {
     unoptimized: true,
     remotePatterns: [
