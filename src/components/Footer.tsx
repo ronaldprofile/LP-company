@@ -89,7 +89,7 @@ export async function Footer() {
             target='_blank'
             className='underline hover:text-gray-300'
           >
-            confira nossa política de privacidade
+            Confira nossa política de privacidade
           </a>
         </p>
         <p className='lg:text-center text-xs mt-2'>
