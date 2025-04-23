@@ -21,6 +21,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='pt-br'>
+      <head>
+        <link rel='icon' href='/favicon.ico' sizes='32x35' />
+      </head>
+
       <body className={`${poppins.variable} antialiased`}>
         {children}
         <Toaster
