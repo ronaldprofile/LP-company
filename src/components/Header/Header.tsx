@@ -2,13 +2,15 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { NavDesktop } from './NavDesktop'
 import { Header as IHeader } from '@/types/menu'
-import { API_BASE_URL } from '@/utils/api'
+import { API_BASE_URL, REVALIDATE_TIME } from '@/utils/api'
 import { NavMobile } from './NavMobile'
 
 export async function Header() {
   const path = `${API_BASE_URL}/api/menu/main`
 
-  const response = await fetch(path)
+  const response = await fetch(path, {
+    next: { revalidate: parseInt(REVALIDATE_TIME) }
+  })
   const data: IHeader = await response.json()
 
   return (

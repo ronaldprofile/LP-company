@@ -2,10 +2,12 @@ import Image from 'next/image'
 import Balancer from 'react-wrap-balancer'
 
 import { Characteristic } from '@/types/characteristics'
-import { API_BASE_URL } from '@/utils/api'
+import { API_BASE_URL, REVALIDATE_TIME } from '@/utils/api'
 
 export async function BenefitsSection() {
-  const response = await fetch(`${API_BASE_URL}/api/blocks/characteristics`)
+  const response = await fetch(`${API_BASE_URL}/api/blocks/characteristics`, {
+    next: { revalidate: parseInt(REVALIDATE_TIME) }
+  })
 
   const data: Characteristic[] = await response.json()
 
@@ -15,7 +17,7 @@ export async function BenefitsSection() {
     <>
       <div className='w-full bg-highlight'>
         <div className='lg:max-w-[1168px] mx-auto py-10 px-6'>
-          <h2 className='text-white font-bold text-2xl sm:text-3xl md:text-4xl sm:w-[619px]'>
+          <h2 className='text-white uppercase font-bold text-2xl sm:text-3xl md:text-4xl sm:w-[619px]'>
             <Balancer>{content.title_general}</Balancer>
           </h2>
         </div>

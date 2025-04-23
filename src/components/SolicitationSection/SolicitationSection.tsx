@@ -1,11 +1,13 @@
 import Image from 'next/image'
 import Balancer from 'react-wrap-balancer'
 import { CTO } from '@/types/CTO'
-import { API_BASE_URL } from '@/utils/api'
+import { API_BASE_URL, REVALIDATE_TIME } from '@/utils/api'
 import { OpenSolicitationButton } from '../OpenSolicitationButton'
 
 export async function SolicitationSection() {
-  const response = await fetch(`${API_BASE_URL}/api/blocks/cto`)
+  const response = await fetch(`${API_BASE_URL}/api/blocks/cto`, {
+    next: { revalidate: parseInt(REVALIDATE_TIME) }
+  })
 
   const data: CTO[] = await response.json()
 

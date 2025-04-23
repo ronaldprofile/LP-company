@@ -2,13 +2,15 @@ import Balancer from 'react-wrap-balancer'
 import { Card } from './Card'
 
 import { PodioResponse } from '@/types/podio'
-import { API_BASE_URL } from '@/utils/api'
+import { API_BASE_URL, REVALIDATE_TIME } from '@/utils/api'
 import { OpenSolicitationButton } from '../OpenSolicitationButton'
 
 export type ICard = PodioResponse['itens'][number]
 
 export async function AboutSection() {
-  const response = await fetch(`${API_BASE_URL}/api/blocks/podio`)
+  const response = await fetch(`${API_BASE_URL}/api/blocks/podio`, {
+    next: { revalidate: parseInt(REVALIDATE_TIME) }
+  })
   const data: PodioResponse = await response.json()
 
   return (

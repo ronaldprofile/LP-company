@@ -1,4 +1,4 @@
-import { API_BASE_URL } from '@/utils/api'
+import { API_BASE_URL, REVALIDATE_TIME } from '@/utils/api'
 import Balancer from 'react-wrap-balancer'
 
 type HomeResponse = {
@@ -8,7 +8,9 @@ type HomeResponse = {
 }
 
 export async function HomeSection() {
-  const response = await fetch(`${API_BASE_URL}/api/banners/contents`)
+  const response = await fetch(`${API_BASE_URL}/api/banners/contents`, {
+    next: { revalidate: parseInt(REVALIDATE_TIME) }
+  })
   const data: HomeResponse[] = await response.json()
 
   const content = data[0]

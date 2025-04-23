@@ -11,10 +11,12 @@ import { SolicitationSection } from '@/components/SolicitationSection/Solicitati
 import Image from 'next/image'
 import { Banner } from '@/types/banners'
 import { cn } from '@/lib/utils'
-import { API_BASE_URL } from '@/utils/api'
+import { API_BASE_URL, REVALIDATE_TIME } from '@/utils/api'
 
 export default async function Home() {
-  const response = await fetch(`${API_BASE_URL}/api/banners`)
+  const response = await fetch(`${API_BASE_URL}/api/banners`, {
+    next: { revalidate: parseInt(REVALIDATE_TIME) }
+  })
   const data: Banner[] = await response.json()
 
   const generalBanners = data[0]

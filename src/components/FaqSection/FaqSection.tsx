@@ -7,11 +7,14 @@ import {
 } from '../ui/accordion'
 
 import './style.css'
+import { REVALIDATE_TIME } from '@/utils/api'
 
 export async function FaqSection() {
   const path = `${process.env.NEXT_PUBLIC_GEST_API_BASE_URL}/help/api`
 
-  const response = await fetch(`${path}/help-topics/?category=FAQ`)
+  const response = await fetch(`${path}/help-topics/?category=FAQ`, {
+    next: { revalidate: parseInt(REVALIDATE_TIME) }
+  })
   const topics: FaqResponse = await response.json()
 
   return (

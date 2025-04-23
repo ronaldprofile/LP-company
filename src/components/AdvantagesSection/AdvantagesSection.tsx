@@ -5,10 +5,12 @@ import roundCheck from './icons/round-check.svg'
 
 import { cn } from '@/utils/cn'
 import { Advantage } from '@/types/advantages'
-import { API_BASE_URL } from '@/utils/api'
+import { API_BASE_URL, REVALIDATE_TIME } from '@/utils/api'
 
 export async function AdvantagesSection() {
-  const response = await fetch(`${API_BASE_URL}/api/blocks/accordion`)
+  const response = await fetch(`${API_BASE_URL}/api/blocks/accordion`, {
+    next: { revalidate: parseInt(REVALIDATE_TIME) }
+  })
   const advantages: Advantage = await response.json()
 
   return (

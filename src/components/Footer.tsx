@@ -1,11 +1,13 @@
 import { Footer as IFooter } from '@/types/footer'
-import { API_BASE_URL } from '@/utils/api'
+import { API_BASE_URL, REVALIDATE_TIME } from '@/utils/api'
 import { Facebook, Instagram, Linkedin, Youtube } from 'lucide-react'
 import Image from 'next/image'
 import Balancer from 'react-wrap-balancer'
 
 export async function Footer() {
-  const response = await fetch(`${API_BASE_URL}/api/blocks/footer`)
+  const response = await fetch(`${API_BASE_URL}/api/blocks/footer`, {
+    next: { revalidate: parseInt(REVALIDATE_TIME) }
+  })
 
   const data: IFooter[] = await response.json()
 
@@ -42,22 +44,38 @@ export async function Footer() {
             <span>Redes sociais</span>
             <ul className='flex gap-2 items-center'>
               <li>
-                <a href={footer.link_facebook.uri} className='font-bold'>
+                <a
+                  target='_blank'
+                  href={footer.link_facebook.uri}
+                  className='font-bold'
+                >
                   <Facebook size={20} />
                 </a>
               </li>
               <li>
-                <a href={footer.link_instagram.uri} className='font-bold'>
+                <a
+                  target='_blank'
+                  href={footer.link_instagram.uri}
+                  className='font-bold'
+                >
                   <Instagram size={20} />
                 </a>
               </li>
               <li>
-                <a href={footer.link_youtube.uri} className='font-bold'>
+                <a
+                  target='_blank'
+                  href={footer.link_youtube.uri}
+                  className='font-bold'
+                >
                   <Youtube size={20} />
                 </a>
               </li>
               <li>
-                <a href={footer.link_linkedin.uri} className='font-bold'>
+                <a
+                  target='_blank'
+                  href={footer.link_linkedin.uri}
+                  className='font-bold'
+                >
                   <Linkedin size={20} />
                 </a>
               </li>
