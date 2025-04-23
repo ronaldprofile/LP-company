@@ -14,7 +14,7 @@ export async function AboutSection() {
   const data: PodioResponse = await response.json()
 
   return (
-    <section className='lg:max-w-[1168px] mx-auto pt-28 px-6 pb-40' id='about'>
+    <section className='lg:max-w-[1168px] mx-auto px-6 pb-40' id='about'>
       <div className='flex flex-col gap-8 lg:flex-row lg:justify-between'>
         <div className='lg:w-[513px] flex flex-col gap-5 text-left'>
           <h2 className='section-title text-black uppercase font-bold'>

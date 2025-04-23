@@ -37,7 +37,7 @@ export async function SolicitationSection() {
 
           <OpenSolicitationButton
             title={content.link.title}
-            className='h-16 text-white w-full mt-6 uppercase font-semibold md:text-xl px-2'
+            className='h-16 p-0 text-center text-white w-full mt-6 uppercase font-semibold md:text-xl px-2'
           />
         </div>
       </div>

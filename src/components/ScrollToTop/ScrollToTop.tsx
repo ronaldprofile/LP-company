@@ -23,7 +23,7 @@ export function ScrollToTopButton() {
   return (
     <button
       className={cn(
-        'p-4 fixed bottom-4 right-4 bg-highlight text-white rounded-full hover:brightness-105 transition cursor-pointer shadow-lg z-100 transform duration-300 ease-in-out',
+        'p-4 fixed bottom-4 right-4 bg-highlight text-white rounded-full hover:brightness-105 transition cursor-pointer shadow-lg z-50 transform duration-300 ease-in-out',
         {
           'opacity-100 translate-y-0': isVisible,
           'opacity-0  translate-x-4 pointer-events-none': !isVisible

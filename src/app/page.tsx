@@ -6,12 +6,12 @@ import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header/Header'
 import { HomeSection } from '@/components/HomeSection'
 import { ScrollToTopButton } from '@/components/ScrollToTop/ScrollToTop'
-import { WhatsappButton } from '@/components/WhatsappButton'
 import { SolicitationSection } from '@/components/SolicitationSection/SolicitationSection'
 import Image from 'next/image'
 import { Banner } from '@/types/banners'
 import { cn } from '@/lib/utils'
 import { API_BASE_URL, REVALIDATE_TIME } from '@/utils/api'
+import { Cookies } from '@/components/Cookies'
 
 export default async function Home() {
   const response = await fetch(`${API_BASE_URL}/api/banners`, {
@@ -27,7 +27,7 @@ export default async function Home() {
   return (
     <div className='w-full h-screen'>
       <ScrollToTopButton />
-      <WhatsappButton />
+      <Cookies />
 
       <div className='relative w-full h-[600px] lg:h-[800px]'>
         <div className='absolute inset-0 bg-radial from-[#20AB99] to-[#0D453E] to-75% opacity-80 z-10' />
