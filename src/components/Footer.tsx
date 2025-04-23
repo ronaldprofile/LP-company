@@ -84,6 +84,15 @@ export async function Footer() {
         </div>
 
         <p className='lg:text-center text-xs mt-10'>
+          <a
+            href='https://termos-podiotech.netlify.app'
+            target='_blank'
+            className='underline hover:text-gray-300'
+          >
+            confira nossa política de privacidade
+          </a>
+        </p>
+        <p className='lg:text-center text-xs mt-2'>
           Podiotech©{new Date().getFullYear()} - Todos os direitos reservados.
         </p>
       </div>
