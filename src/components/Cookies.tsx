@@ -25,7 +25,7 @@ export function Cookies() {
   return (
     <div
       className={cn(
-        'fixed bottom-4 right-4 left-4 sm:bottom-6 sm:left-6 sm:right-6 z-100 shadow-lg lg:max-w-3xl mx-auto w-auto',
+        'fixed bottom-4 right-4 left-4 sm:bottom-6 sm:left-6 sm:right-6 z-100 shadow-lg lg:max-w-3xl w-auto',
         {
           'hidden opacity-0 invisible': !isVisible
         }

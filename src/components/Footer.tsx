@@ -18,7 +18,7 @@ export async function Footer() {
     <>
       <WhatsappButton number={footer.Telefone} />
 
-      <footer className='bg-[#171717] pt-[100px] pb-4'>
+      <footer className='bg-[#171717] pt-8 pb-4'>
         <div className='lg:max-w-[1168px] mx-auto text-white px-6'>
           <div className='flex flex-col lg:flex-row lg:justify-between lg:items-center'>
             <div className='flex flex-col gap-7 mb-4 lg:mb-0'>
